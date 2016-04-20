@@ -31,9 +31,14 @@ mongoose.connect(db.url);
 var apiRouter = express.Router();
 
 var usersAPI = require('./handlers/users');
+var feedbackAPI = require('./handlers/feedback');
 
 apiRouter.route('/users')
   .get(usersAPI.getAllUsers);
+
+apiRouter.route('/feedback')
+  .post(feedbackAPI.createFeedback)
+  .get(feedbackAPI.getAllFeedbacks)
 
 app.use('/api', apiRouter);
 
