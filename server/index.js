@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const port = 3663;
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 const server = app.listen(port, function() {
   console.log('app is running at http://localhost:%s', port);
 })
