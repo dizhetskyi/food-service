@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FoodService Admin</title>
+
+  <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+<body ng-app="foodService">
+
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/">FoodService Admin</a>
+      </div>
+  
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="#/">Home</a></li>
+          <li><a href="#/menu">Menu</a></li>
+          <li><a href="#/users">Users</a></li>
+          <li><a href="#/feedback">Feedback</a></li>
+          <li><a href="#/test">test</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Login</a></li>
+        </ul>
+
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </nav>
+
+
+  <ng-view></ng-view>
+
+  <script src="/libs/jquery/dist/jquery.min.js"></script>
+  <script src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/libs/angular/angular.js"></script>
+  <script src="/libs/angular-route/angular-route.js"></script>
+
+  <script src="/admin/js/app.js"></script>
+
+  <script src="/admin/js/routes/index/indexCtrl.js"></script>
+  <script src="/admin/js/routes/test/testCtrl.js"></script>
+  
+</body>
+</html>
