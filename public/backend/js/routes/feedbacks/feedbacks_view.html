@@ -1,0 +1,40 @@
+<div class="container">
+  <ul ng-show="feed.feedbacks.length > 0">
+    <li ng-repeat="f in feed.feedbacks">
+      <ul>
+        <li>
+          <p>
+            This feed was left by :
+            <strong>{{f.customer.name}}</strong>
+          </p>
+        </li>
+        <li>
+          <p>
+            on :
+            <strong>{{f.date_added}}</strong>
+          </p>
+        </li>
+        <li>
+          <p>
+            feed message :
+            <strong>{{f.content}}</strong>
+          </p>
+        </li>
+        </li>
+        <li>
+          <p>
+            feedback Type :
+            <strong>{{f.feedbackType}}</strong>
+          </p>
+        </li>
+        </li>
+        <li>
+          <p>
+            feed version :
+            <strong>{{f.__v}}</strong>
+          </p>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
