@@ -31,12 +31,16 @@ mongoose.connect(db.url);
 var apiRouter = express.Router();
 
 var usersAPI = require('./handlers/users');
+var feedbackAPI = require('./handlers/feedback');
 
 apiRouter.route('/users')
   .get(usersAPI.getAllUsers);
 
-app.use('/api', apiRouter);
+apiRouter.route('/feedback')
+  .get(feedbackAPI.getAllFeedbacks)
+  .post(feedbackAPI.createFeedback)
 
+app.use('/api', apiRouter);
 
 
 // admin serve
