@@ -3,7 +3,6 @@ var
   feedBackSchema = new mongoose.Schema({
     userName: {
       type: String,
-      required: true
     },
     date: {
       type: Date,
@@ -17,4 +16,4 @@ var
     }
   });
 
-  module.exports = mongoose.model('fs_feeed', feedBackSchema);
+  module.exports = mongoose.model('fs_feeeeds', feedBackSchema);

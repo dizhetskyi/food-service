@@ -7,8 +7,8 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'IndexController as index',
       templateUrl: '/admin/js/routes/index/indexView.html'
     })
-    .when('/feedbacks', {
-      controller: 'FeedBackController as feeds',
+    .when('/feedback', {
+      controller: 'FeedBacksController as feed',
       templateUrl: '/admin/js/routes/feedbacks/feedbacks_view.html'
     })
     .when('/test', {

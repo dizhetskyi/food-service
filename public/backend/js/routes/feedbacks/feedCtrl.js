@@ -1,14 +1,15 @@
-angular.module('foodService')
-  .controller('feedCtrl', ['$scope', '$http', 'feedCtrl']);
+var app = angular.module('foodService');
 
-  function feedCtrl($scope, $http) {
+app.controller('FeedBacksController', ['$scope', '$http', FeedBacksController]);
+
+  function FeedBacksController($scope, $http) {
     var vm = this;
-    vm.feeds = [];
+    vm.feedbacks = [];
 
-    $http.get('/api/feedbacks')
+    $http.get('/api/feedback')
       .then(function (res) {
         if(res.data.success) {
-          vm.feeds = res.data.feeds;
+          vm.feedbacks = res.data.feeds;
         }
       });
   }

@@ -33,7 +33,7 @@ var feedBackAPI = require('./handlers/feeds');
 apiRouter.route('/users')
   .get(usersAPI.getAllUsers);
 
-apiRouter.route('/feedbacks')
+apiRouter.route('/feedback')
   .get(feedBackAPI.getAllFeedBacks);
 
 app.use('/api', apiRouter);

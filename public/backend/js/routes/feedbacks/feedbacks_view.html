@@ -1,8 +1,28 @@
 <div class="container">
-  <ul>
-    <li ng-repeat="f in feeds.feeds"></li>
+  <ul ng-show="feed.feedbacks.length > 0">
+    <li ng-repeat="f in feed.feedbacks">
+      <ul>
+        <li>
+          <p>
+            This feed was left by :
+            <strong>{{f.userName}}</strong>
+          </p>
+        </li>
+      <ul>
+        <li>
+          <p>
+            on :
+            <strong>{{f.date}}</strong>
+          </p>
+        </li>
+      <ul>
+        <li>
+          <p>
+            feed message :
+            <strong>{{f.content}}</strong>
+          </p>
+        </li>
+      </ul>
+    </li>
   </ul>
-  <p>
-    {{feeds.feeds}}
-  </p>
 </div>
