@@ -1,19 +1,27 @@
 var
   mongoose = require('mongoose'),
   feedBackSchema = new mongoose.Schema({
-    userName: {
-      type: String,
-    },
-    date: {
-      type: Date,
-      default: Date.now
-    },
     content: {
       type: String
     },
+    feedbackType: {
+      type: String,
+      default: 'Question'
+    },
     status: {
-      type: Number
+      type: String,
+      default: 'New'
+    },
+    date_added: {
+      type: Date,
+      default: Date.now
+    },
+    customer: {
+    },
+    __v: {
+      type: Number,
+      default: 0
     }
   });
 
-  module.exports = mongoose.model('fs_feeeeds', feedBackSchema);
+  module.exports = mongoose.model('fs_feedbacks', feedBackSchema);
