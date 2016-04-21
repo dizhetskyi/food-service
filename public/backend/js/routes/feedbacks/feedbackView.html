@@ -1,0 +1,17 @@
+<div class="container">
+  <h3>Feedbacks</h3>
+
+  <ul ng-show="feedbackCtrl.feedbacks.length > 0">
+    <li ng-repeat="item in feedbackCtrl.feedbacks">
+      <div>
+        {{item.customer}}<br>
+        {{item.date_added}}<br>
+        {{item.status}}<br>
+        {{item.feedbackType}}<br>
+        {{item.content}}<br>
+      </div>
+      <button type="button" class="btn btn-primary" name="Edit" ng-click="feedbackCtrl.handleUpdateClick(item._id)">EDIT</button>
+      <button type="button" class="btn btn-danger" name="Delete" ng-click="feedbackCtrl.handleDeleteClick(item._id)">DELETE</button>
+    </li>
+  </ul>
+</div>

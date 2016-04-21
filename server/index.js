@@ -37,8 +37,21 @@ apiRouter.route('/users')
   .get(usersAPI.getAllUsers);
 
 apiRouter.route('/feedback')
-  .post(feedbackAPI.createFeedback)
   .get(feedbackAPI.getAllFeedbacks)
+  .post(feedbackAPI.createFeedback)
+  .delete(function (req, res) {
+
+  })
+  .put(function (req, res) {
+    res.sendStatus(500);
+    return;
+    res.json({
+      text: 'ty vyzval metod PUT'
+    })
+  })
+
+apiRouter.route('/feedback/:id')
+  .delete(feedbackAPI.deleteFeedback)
 
 app.use('/api', apiRouter);
 
