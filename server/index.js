@@ -43,6 +43,10 @@ apiRouter.route('/feedback')
   .get(feedbackAPI.getAllFeedbacks)
   .post(feedbackAPI.createFeedback)
 
+apiRouter.route('/feedback/:id')
+  .get(feedbackAPI.getOneFeedback)
+  .put(feedbackAPI.updateFeedback)
+
 app.use('/api', apiRouter);
 
 

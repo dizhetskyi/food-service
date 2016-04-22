@@ -1,0 +1,13 @@
+<div class="container">
+  
+  <ul>
+    <li ng-repeat="item in feedbackCtrl.items">
+      <h4><a ng-href="#/feedback/edit/{{item._id}}">{{item.customer.name}}</a></h4>
+      <div>
+        {{item.content}}        
+      </div>
+      <i>{{item.date_added | date : 'dd.mm.yyyy'}}</i>
+    </li>
+  </ul>
+
+</div>
