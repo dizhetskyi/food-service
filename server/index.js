@@ -31,9 +31,27 @@ mongoose.connect(db.url);
 var apiRouter = express.Router();
 
 var usersAPI = require('./handlers/users');
+var feedbackAPI = require('./handlers/feedback');
 
 apiRouter.route('/users')
   .get(usersAPI.getAllUsers);
+
+apiRouter.route('/feedback')
+  .get(feedbackAPI.getAllFeedbacks)
+  .post(feedbackAPI.createFeedback)
+  .delete(function (req, res) {
+
+  })
+  .put(function (req, res) {
+    res.sendStatus(500);
+    return;
+    res.json({
+      text: 'ty vyzval metod PUT'
+    })
+  })
+
+apiRouter.route('/feedback/:id')
+  .delete(feedbackAPI.deleteFeedback)
 
 app.use('/api', apiRouter);
 
