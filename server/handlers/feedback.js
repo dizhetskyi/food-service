@@ -59,6 +59,11 @@ module.exports = {
       })
     })
 
+  },
+
+  editFeedback: function (req, res) {
+
+    db.Feedback.findOneAndUpdate(req.params.id,)
   }
 
 }

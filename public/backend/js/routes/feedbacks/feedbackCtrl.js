@@ -28,6 +28,12 @@ function FeedbackController($scope, $http) {
   }
 
   vyooshka.handleUpdateClick = function(id){
-    $http.put('/api/feedback')
+    var feedbackToBeEdited;
+    $http.get('/api/feedback')
+    .then(function (res) {
+      if (res.data.success){
+
+      }
+    })
   }
 }
