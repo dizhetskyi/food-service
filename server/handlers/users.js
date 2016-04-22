@@ -7,8 +7,7 @@ module.exports = {
     db.User.find({}, function(err, users){
       res.json({
         success: true,
-        users: users,
-        types: db.User.feedbackTypes()
+        users: users
       })
     })
 

@@ -30,11 +30,14 @@ mongoose.connect(db.url);
 
 var apiRouter = express.Router();
 
+// user routes
 var usersAPI = require('./handlers/users');
-var feedbackAPI = require('./handlers/feedback');
 
 apiRouter.route('/users')
   .get(usersAPI.getAllUsers);
+
+// feedback routes
+var feedbackAPI = require('./handlers/feedback');
 
 apiRouter.route('/feedback')
   .get(feedbackAPI.getAllFeedbacks)
@@ -44,7 +47,6 @@ app.use('/api', apiRouter);
 
 
 // admin serve
-
 app.get(['/admin', '/admin/*'], function(req, res) {
   res.sendFile(path.resolve(__dirname + '/../public/backend/app.html'));
 })
