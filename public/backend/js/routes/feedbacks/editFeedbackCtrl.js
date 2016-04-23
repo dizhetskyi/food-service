@@ -13,7 +13,6 @@ function editFeedbackCtrl($scope, $http, $routeParams, $window) {
     })
 
   vm.handleSubmitClick = function() {
-    console.log(2345245);
     $http.put('/api/feedback/' + $routeParams.id, _serializeForm())
 
     $window.location.href = '/admin/#/feedback';
