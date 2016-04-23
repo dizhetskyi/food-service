@@ -1,11 +1,60 @@
 <div class="container">
   <h3>Feedbacks</h3>
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" placeholder="">
+    </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <input type="text" class="form-control" placeholder="">
+    </div>
+    <div class="form-inline">
+      <div class="form-group">
+        <label>E-mail</lab  el>
+        <input type="email" class="form-control" placeholder="">
+      </div>
+      <div class="form-group form-inline">
+        <label>Staus</label>
+        <div class="radio">
+          <label><input type="radio" name="optradio">NEW</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio">PENDING</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio">CLOSED</label>
+        </div>
+      </div>
+      <div class="form-group form-inline">
+        <label>Feedback Type</label>
+        <div class="radio">
+          <label><input type="radio" name="optradio">QUESTION</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio">COMPLAINT</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio">PROPOSAL</label>
+        </div>
+      </div>
+    </div>
 
+    <div class="form-group">
+      <label>Content</label>
+      <textarea class="form-control" rows="3"></textarea>
+    </div>
+
+    <button type="button" class="btn btn-primary btn-lg pull-right">Submit</button>
+  </form>
+</div>
+<div class="container">
   <ul ng-show="feedbackCtrl.feedbacks.length > 0">
     <li ng-repeat="item in feedbackCtrl.feedbacks">
       <div>
-        {{item.customer}}<br>
-        {{item.date_added}}<br>
+        {{item.customer.name}}<br>
+        {{item.date_added | date}}<br>
         {{item.status}}<br>
         {{item.feedbackType}}<br>
         {{item.content}}<br>
@@ -14,4 +63,6 @@
       <button type="button" class="btn btn-danger" name="Delete" ng-click="feedbackCtrl.handleDeleteClick(item._id)">DELETE</button>
     </li>
   </ul>
+</div>
+
 </div>

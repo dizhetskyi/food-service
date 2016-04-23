@@ -53,6 +53,7 @@ function deleteFeedback(req, res) {
 }
 
 function editFeedback(req, res) {
+  console.log(123213);
     var id = req.params.id;
     db.Feedback.findByIdAndUpdate(id, req.body, {new: true}, function(err, updated) {
     res.json({
