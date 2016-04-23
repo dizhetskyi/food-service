@@ -15,7 +15,25 @@ function getAllFeedbacks(req, res) {
       success: true,
       feedbacks: feedbacks,
       types: db.Feedback.schema.path('feedbackType').enumValues,
-      statuses: db.Feedback.schema.path('status').enumValues,
+      statuses: db.Feedback.schema.path('status').enumValues
+    })
+  })
+}
+
+function getOneFeedback(req, res) {
+  db.Feedback.findById(req.params.id, function(err, feedback) {
+    if (err){
+      res.json({
+        success: false,
+        errors: err
+      })
+      return;
+    }
+
+    res.json({
+      feedback: feedback,
+      types: db.Feedback.schema.path('feedbackType').enumValues,
+      statuses: db.Feedback.schema.path('status').enumValues
     })
   })
 }
@@ -53,9 +71,15 @@ function deleteFeedback(req, res) {
 }
 
 function editFeedback(req, res) {
-  console.log(123213);
     var id = req.params.id;
     db.Feedback.findByIdAndUpdate(id, req.body, {new: true}, function(err, updated) {
+    if(err){
+      res.json({
+        success: false,
+        errors: err
+      })
+    }
+
     res.json({
       success: true
     })
@@ -66,5 +90,6 @@ module.exports = {
   getAllFeedbacks: getAllFeedbacks,
   createFeedback: createFeedback,
   deleteFeedback: deleteFeedback,
-  editFeedback: editFeedback
+  editFeedback: editFeedback,
+  getOneFeedback: getOneFeedback
 }

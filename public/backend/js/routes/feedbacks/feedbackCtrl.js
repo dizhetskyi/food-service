@@ -3,7 +3,6 @@ var app = angular.module('foodService');
 app.controller('FeedbackController', ['$scope', '$http', FeedbackController])
 
 function FeedbackController($scope, $http) {
-
   var vyooshka = this;
 
   vyooshka.feedbacks = [];
@@ -25,15 +24,5 @@ function FeedbackController($scope, $http) {
         }
       })
 
-  }
-
-  vyooshka.handleEditClick = function(id){
-    var feedbackToBeEdited;
-    $http.put('/api/feedback/' + id)
-    .then(function (res) {
-      if (res.data.success){
-
-      }
-    })
   }
 }
