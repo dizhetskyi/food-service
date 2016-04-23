@@ -1,8 +1,8 @@
 var app = angular.module('foodService')
 
-app.controller('EditFeedbackCtrl', ['$scope', '$http', '$routeParams', editFeedbackCtrl])
+app.controller('EditFeedbackCtrl', ['$scope', '$http', '$routeParams', '$window', editFeedbackCtrl])
 
-function editFeedbackCtrl($scope, $http, $routeParams) {
+function editFeedbackCtrl($scope, $http, $routeParams, $window) {
   var vm = this;
 
   $http.get('/api/feedback/' + $routeParams.id)
@@ -13,9 +13,10 @@ function editFeedbackCtrl($scope, $http, $routeParams) {
     })
 
   vm.handleSubmitClick = function() {
-    console.log(123123);
+    console.log(2345245);
     $http.put('/api/feedback/' + $routeParams.id, _serializeForm())
 
+    $window.location.href = '/admin/#/feedback';
   }
 
   function _serializeForm() {
