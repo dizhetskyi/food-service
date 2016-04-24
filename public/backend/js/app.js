@@ -12,8 +12,8 @@ app.config(['$routeProvider', function($routeProvider) {
       templateUrl: '/admin/js/routes/feedbacks/feedbacks_view.html'
     })
     .when('/feedback/edit/:id', {
-      controller: 'FeedBacksController as feedCtrl',
-      templateUrl: '/admin/js/routes/feedbacks/feedbacks_view.html'
+      controller: 'FeedEditController as feedEditCtrl',
+      templateUrl: '/admin/js/routes/feedbacks/feedback_form_edit.html'
     })
     .when('/feedback', {
       controller: 'FeedBacksController as feedCtrl',

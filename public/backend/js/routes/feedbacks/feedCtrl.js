@@ -14,7 +14,7 @@ app.controller('FeedBacksController', ['$scope', '$http', '$routeParams', '$loca
       });
 
     vm.deleteFeed = function(id){
-      console.log($location.path());
+      //console.log($location.path());
       $http.delete('/api/feedback/' + id)
 
           .then(function(res){

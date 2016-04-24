@@ -1,18 +1,51 @@
 var db = require('../db/config');
 
 function getAllFeedBacks(req, res){
+
   db.FeedBack.find({}, function (err, feeds) {
-    if(err) throw new err;
+
+    if(err){
+      res.json({
+        success:false,
+        err: err
+      });
+      return;
+    }
 
     res.json({
       success: true,
+      statuses: db.FeedBack.schema.path('status').enumValues,
+      types: db.FeedBack.schema.path('feedbackType').enumValues,
       feeds: feeds
     })
   })
 }
 
+function getTargetFeed(req, res){
+
+  db.FeedBack.findById(req.params.id, function(err, feed){
+
+    if(err){
+      res.json({
+        success: false,
+        err: err
+      });
+      return;
+    }
+
+    res.json({
+      //success: true,
+      statuses: db.FeedBack.schema.path('status').enumValues,
+      types: db.FeedBack.schema.path('feedbackType').enumValues,
+      feed: feed
+    })
+  });
+}
+
 function deleteTargetFeed(req, res){
+
   db.FeedBack.findByIdAndRemove(req.params.id, function(err, feeds){
+
     if(err){
       res.sendStatus(500);
       return;
@@ -24,21 +57,29 @@ function deleteTargetFeed(req, res){
   });
 }
 
-function getTargetFeed(req, res){
-  db.FeedBack.findOne(req.params.id, function(err, feed){
+function editTargetFeed(req, res){
+
+  var id = req.params.id;
+
+  db.FeedBack.findByIdAndUpdate(id, req.body, {new: true}, function (err, updatedFeed) {
     if(err){
-      res.sendStatus(500);
+      res.json({
+        success: false,
+        err: err
+      });
       return;
     }
 
     res.json({
       success: true,
-      feed : feed
-    })
-  });
+      feed: updatedFeed
+    });
+  })
 }
 
 module.exports = {
   getAllFeedBacks: getAllFeedBacks,
-  deleteTargetFeed: deleteTargetFeed
+  getTargetFeed: getTargetFeed,
+  deleteTargetFeed: deleteTargetFeed,
+  editTargetFeed: editTargetFeed
 };

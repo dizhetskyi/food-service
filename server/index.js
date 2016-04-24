@@ -40,6 +40,8 @@ apiRouter.route('/feedback')
   .get(feedBackAPI.getAllFeedBacks);
 
 apiRouter.route('/feedback/:id')
+  .get(feedBackAPI.getTargetFeed)
+  .put(feedBackAPI.editTargetFeed)
   .delete(feedBackAPI.deleteTargetFeed);
 
 app.use('/api', apiRouter);
