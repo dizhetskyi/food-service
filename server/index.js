@@ -30,23 +30,24 @@ mongoose.connect(db.url);
 
 var apiRouter = express.Router();
 
-// user routes
 var usersAPI = require('./handlers/users');
+var feedBackAPI = require('./handlers/feeds');
 
 apiRouter.route('/users')
   .get(usersAPI.getAllUsers);
 
-// feedback routes
-var feedbackAPI = require('./handlers/feedback');
-
 apiRouter.route('/feedback')
-  .get(feedbackAPI.getAllFeedbacks)
-  .post(feedbackAPI.createFeedback)
+  .get(feedBackAPI.getAllFeedBacks);
+
+apiRouter.route('/feedback/:id')
+  .delete(feedBackAPI.deleteTargetFeed);
 
 app.use('/api', apiRouter);
 
 
+
 // admin serve
+
 app.get(['/admin', '/admin/*'], function(req, res) {
   res.sendFile(path.resolve(__dirname + '/../public/backend/app.html'));
 })

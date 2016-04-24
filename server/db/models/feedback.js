@@ -51,6 +51,6 @@ var feedbackSchema = new Schema({
   }
 }, {
   collection: 'fs_feedbacks'
-})
+});
 
 module.exports = mongoose.model('Feedback', feedbackSchema);

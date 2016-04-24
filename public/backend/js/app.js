@@ -7,6 +7,18 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'IndexController as index',
       templateUrl: '/admin/js/routes/index/indexView.html'
     })
+    .when('/feedback/delete/:id', {
+      controller: 'FeedBacksController as feedCtrl',
+      templateUrl: '/admin/js/routes/feedbacks/feedbacks_view.html'
+    })
+    .when('/feedback/edit/:id', {
+      controller: 'FeedBacksController as feedCtrl',
+      templateUrl: '/admin/js/routes/feedbacks/feedbacks_view.html'
+    })
+    .when('/feedback', {
+      controller: 'FeedBacksController as feedCtrl',
+      templateUrl: '/admin/js/routes/feedbacks/feedbacks_view.html'
+    })
     .when('/test', {
       controller: 'TestController as test',
       templateUrl: '/admin/js/routes/test/testView.html'
@@ -15,4 +27,4 @@ app.config(['$routeProvider', function($routeProvider) {
       redirectTo: '/'
     })
 
-}])
+}]);

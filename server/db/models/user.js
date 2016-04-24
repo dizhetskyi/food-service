@@ -6,8 +6,6 @@ var userSchema = new mongoose.Schema({
     type: String
   }
 
-}, {
-  collection: 'fs_users'
 })
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('fs_users', userSchema);

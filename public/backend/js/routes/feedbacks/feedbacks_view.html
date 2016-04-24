@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="">
+     {{feedCtrl.feedbacks.length}}
+  </div>
+  <ul ng-show="feedCtrl.feedbacks.length > 0" >
+    <li ng-repeat="f in feedCtrl.feedbacks" >
+
+      <ul class="list-group">
+
+        <li class="list-group-item">
+          <div class="panel-header">
+            This feed was left by :
+            <h4>customer Info : </h4>
+            <div class="customer info">
+              <p>
+                <span>User Name :  </span><strong>{{f.customer.name}}</strong><br>
+                <span>User Email :  </span><strong>{{f.customer.email}}</strong><br>
+                <span>User Phone Number :  </span><strong>{{f.customer.phone}}</strong><br>
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="panel-header">
+            Date Posted:
+            <h4>Date Info : </h4>
+            <div class="customer info">
+              <p>
+                <span>On:  </span><strong>{{f.date_added | date: 'M/d/yyyy HH:mm:ss' }}</strong>
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="panel-header">
+            Feed Content:
+            <h4>Feed meassage : </h4>
+            <div class="customer info">
+              <p>
+                <span>Feed message :  </span><strong>{{f.content }}</strong>
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="panel-header">
+            Date Posted:
+            <h4>Date Info : </h4>
+            <div class="customer info">
+              <p>
+                <span>Feed Type  :  </span><strong>{{f.feedbackType }}</strong>
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="panel-header">
+            <a href="#/feedback/edit/{{f._id}}" class="btn btn-primary">Edit feedback</a>
+            <a ng-href="#/feedback/delete/{{f._id}}" class="btn btn-danger" ng-click="feedCtrl.deleteFeed(f._id)">Delete feedback</a>
+          </div>
+        </li>
+
+
+      </ul>
+
+    </li>
+  </ul>
+</div>
