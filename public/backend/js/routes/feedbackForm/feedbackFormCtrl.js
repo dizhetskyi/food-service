@@ -12,6 +12,8 @@ function FeedbackFormController($routeParams, $http){
   $http.get('/api/feedback/' + vm.modelId)
     .then(function(req) {
       vm.formData = req.data.feedbackData;
+      vm.types = req.data.types;
+      vm.statuses = req.data.statuses;
     })
 
   vm.formSubmit = function() {

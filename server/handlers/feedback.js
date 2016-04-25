@@ -56,7 +56,9 @@ function getOne(req, res) {
 
     res.json({
       success: true,
-      feedbackData: doc
+      feedbackData: doc,
+      statuses: db.Feedback.schema.path('status').enumValues,
+      types: db.Feedback.schema.path('feedbackType').enumValues
     });
   })  
 
@@ -76,10 +78,20 @@ function update(req, res) {
 
 }
 
+function getTypes(req, res) {
+
+  res.json({
+    success: true,
+    types: db.Feedback.schema.path('feedbackType').enumValues
+  })
+
+}
+
 
 module.exports = {
   getAllFeedbacks: getAll,
   createFeedback: create,
   getOneFeedback: getOne,
-  updateFeedback: update
+  updateFeedback: update,
+  getFeedbackTypes: getTypes
 }

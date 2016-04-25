@@ -1,0 +1,64 @@
+<div class="container">
+  
+  <h2>Contacts</h2>
+
+  <div class="row">
+
+    <div class="col-lg-8 col-sm-6">
+      <br>
+      <p>Адрес: хызфвнгшфывыфвл </p>
+      <p>Телефоны: 658799142</p>
+    </div>
+
+    <div class="col-lg-4 col-sm-6" ng-show="!contactsCtrl.loading">
+      <div ng-if="contactsCtrl.feedbackSent">
+        <div class="alert alert-info">
+          Сообщение отправлено
+        </div>
+      </div>
+      <div ng-if="!contactsCtrl.feedbackSent">
+        <h3>Напишите нам</h3>
+        <br>
+        <form name="contactsCtrl.feedbackForm" ng-submit="contactsCtrl.submitForm()">
+          
+          <div class="form-group">
+            <label for="f-feedbackType">Тема</label>
+            <select id="f-feedbackType" name="feedbackType" ng-model="contactsCtrl.formData.feedbackType" class="form-control" ng-options="type for type in contactsCtrl.feedbackTypes"></select>
+          </div>
+
+          <div class="form-group" ng-class="{'has-error': !contactsCtrl.feedbackForm.customer_name.$pristine && contactsCtrl.feedbackForm.customer_name.$invalid}">
+            <label for="f-name">Имя</label>
+            <input type="text" id="f-name" name="customer_name" ng-model="contactsCtrl.formData.customer.name" class="form-control" required>
+            <div ng-messages="contactsCtrl.feedbackForm.customer_name.$error" class="help-block">
+              <div ng-message="required">Required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="f-phone">Телефон</label>
+            <input type="text" id="f-phone" name="customer_phone" ng-model="contactsCtrl.formData.customer.phone" class="form-control">
+          </div>
+
+          <div class="form-group" ng-class="{'has-error': !contactsCtrl.feedbackForm.customer_email.$pristine && contactsCtrl.feedbackForm.customer_email.$invalid}">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="customer_email" ng-model="contactsCtrl.formData.customer.email" class="form-control">
+          </div>
+          
+          <div class="form-group" ng-class="{'has-error': !contactsCtrl.feedbackForm.content.$pristine && contactsCtrl.feedbackForm.content.$invalid}">
+            <label for="f-content">Сообщение</label>
+            <textarea id="f-content" name="content" ng-model="contactsCtrl.formData.content" class="form-control" required></textarea>
+            <div ng-messages="contactsCtrl.feedbackForm.content.$error" class="help-block">
+              <div ng-message="required">Required</div>
+            </div>
+          </div>
+
+          <br>
+
+          <button id="formSubmitButton" class="btn btn-primary btn-lg" type="submit" ng-disabled="contactsCtrl.feedbackForm.$invalid">Отправить</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

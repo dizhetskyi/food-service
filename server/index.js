@@ -43,6 +43,9 @@ apiRouter.route('/feedback')
   .get(feedbackAPI.getAllFeedbacks)
   .post(feedbackAPI.createFeedback)
 
+apiRouter.route('/feedback/types')
+  .get(feedbackAPI.getFeedbackTypes)
+
 apiRouter.route('/feedback/:id')
   .get(feedbackAPI.getOneFeedback)
   .put(feedbackAPI.updateFeedback)
