@@ -11,6 +11,10 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'TestController as test',
       templateUrl: '/admin/js/routes/test/testView.html'
     })
+    .when('/feedback/edit/:id', {
+      controller: 'EditFeedbackCtrl as editFeedbackCtrl',
+      templateUrl: '/admin/js/routes/feedbacks/editForm.html'
+    })
     .when('/feedback', {
       controller: 'FeedbackController as feedbackCtrl',
       templateUrl: '/admin/js/routes/feedbacks/feedbackView.html'
