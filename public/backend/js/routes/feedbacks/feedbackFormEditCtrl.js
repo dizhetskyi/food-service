@@ -3,19 +3,23 @@
  */
 var app = angular.module('foodService');
 
-app.controller('FeedEditController', ['$scope', '$routeParams', '$http', feedbackFormEditCtrl]);
+app.controller('FeedEditController', ['$routeParams', '$http', '$location', feedbackFormEditCtrl]);
 
-function feedbackFormEditCtrl($scope, $routeParams, $http){
+function feedbackFormEditCtrl($routeParams, $http, $location){
     var vm  = this;
     vm.formData = {};
-
 
     $http.get('/api/feedback/'+ $routeParams.id)
         .then(function(res){
             vm.formData = res.data.feed;
             vm.statuses = res.data.statuses;
             vm.types = res.data.types;
-        });
+    });
+
+    vm.submitFeedEditForm = function (){
+        $http.put('/api/feedback/' + $routeParams.id, _serializeForm());
+        $location.url('/feedback');
+    };
 
     function _serializeForm(){
         return {

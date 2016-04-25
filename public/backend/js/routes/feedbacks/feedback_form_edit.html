@@ -1,7 +1,5 @@
 <div class="container">
-    {{feedEditCtrl.formData}}}
-
-    <form name="edit_feed" ng-submit="">
+    <form name="edit_feed" ng-submit="feedEditCtrl.submitFeedEditForm()">
         <div class="form-group">
             <label>Name</label>
             <input type="text" name="name" ng-model="feedEditCtrl.formData.customer.name" class="form-control" placeholder="">
@@ -9,35 +7,33 @@
 
         <div class="form-group">
             <label>Phone</label>
-            <input type="text" name="phone" class="form-control" placeholder="">
+            <input type="text" name="phone" ng-model="feedEditCtrl.formData.customer.phone" class="form-control" placeholder="">
         </div>
 
-        <div class="form-inline">
-            <div class="form-group">
-                <label>E-mail</label>
-                    <input type="email" name="email" class="form-control" placeholder="">
-            </div>
+        <div class="form-group form-inline">
+            <label>E-mail</label>
+                <input type="email" name="email" class="form-control" ng-model="feedEditCtrl.formData.customer.email" placeholder="">
+        </div>
 
-            <div class="form-group form-inline">
-                <label>Status</label>
-                <div class="radio" ng-repeat="s in feedEditCtrl.statuses">
-                    <label><input  ng-model="feedEditCtrl.formData.status" type="radio" name="status" value="{{s}}">{{s}}</label>
-                </div>
+        <div class="form-group form-inline">
+            <label>Status</label>
+            <div class="radio" ng-repeat="s in feedEditCtrl.statuses">
+                <label><input  ng-model="feedEditCtrl.formData.status" type="radio" name="status" value="{{s}}">{{s}}</label>
             </div>
+        </div>
 
-            <div class="form-group form-inline">
-                <label>Feedback Type</label>
-                <div class="radio" >
-                    <label><input ng-model="editFeedbackCtrl.formData.feedbackType" type="radio" name="type"></label>
-                </div>
+        <div class="form-group form-inline">
+            <label>Feedback Type</label>
+            <div class="radio" ng-repeat="type in feedEditCtrl.types">
+                <label><input ng-model="feedEditCtrl.formData.feedbackType" type="radio" name="type" value="{{type}}">{{type}}</label>
             </div>
         </div>
 
         <div class="form-group">
             <label>Content</label>
-            <textarea class="form-control" name="content" rows="3"></textarea>
+            <textarea class="form-control" ng-model="feedEditCtrl.formData.content" name="content" rows="3">{{feedEditCtrl.formData.content}}</textarea>
         </div>
 
-        <button type="button" class="btn btn-primary btn-lg pull-right" >Submit</button>
+        <button type="button" class="btn btn-primary btn-lg pull-right" ng-click="feedEditCtrl.submitFeedEditForm()">Submit</button>
     </form>
 </div>
