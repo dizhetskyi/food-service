@@ -1,0 +1,42 @@
+<div class="container">
+    <div ng-if="feedbackItemCtrl.feedbackUpdate">
+        <div class="alert alert-info">
+            Feedback status has been updated!
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>{{feedbackItemCtrl.feedback.customer.name}}</h4>
+        </div>
+        <div class="panel-body">
+            <h5>{{feedbackItemCtrl.feedback.feedbackType}}</h5>
+            <p>
+                {{feedbackItemCtrl.feedback.content}}
+            </p>
+            <p>
+                <strong>{{feedbackItemCtrl.feedback.date_added | date: 'MM/dd/yyyy - HH:mm'}}</strong>
+            </p>
+        </div>
+        <div class="panel-footer">
+            <p>
+                Call to <strong>{{feedbackItemCtrl.feedback.customer.name}}</strong>: <a ng-href="tel:feedbackItemCtrl.feedback.customer.phone">{{feedbackItemCtrl.feedback.customer.phone}}</a>
+            </p>
+            <p>
+                Send email to <strong>{{feedbackItemCtrl.feedback.customer.name}}</strong>: <a ng-href="mailto:feedbackItemCtrl.feedback.customer.email">{{feedbackItemCtrl.feedback.customer.email}}</a>
+            </p>
+        </div>
+    </div>
+    <form name="feedbackItemCtrl.updateForm" ng-submit="feedbackItemCtrl.handleUpdatefeedback()">
+        <div class="form-group">
+            <select ng-model="feedbackItemCtrl.selectedStatus" class="form-control" ng-options="status for status in feedbackItemCtrl.feedbackStatuses"></select>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <button type="submit" class="btn btn-primary">Update feedback</button>
+            </div>
+            <div class="col-xs-6 text-right">
+                <a href="" ng-click="feedbackItemCtrl.removeFeedback(feedbackItemCtrl.feedback._id)" class="btn btn-danger">Remove feedback</a>
+            </div>
+        </div>
+    </form>
+</div>
