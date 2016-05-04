@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 
 const server = app.listen(port, function() {
   console.log('app is running at http://localhost:%s', port);
-})
+});
 
 
 // aliases
@@ -31,9 +31,26 @@ mongoose.connect(db.url);
 var apiRouter = express.Router();
 
 var usersAPI = require('./handlers/users');
+var feedbackAPI = require('./handlers/feedback');
+
 
 apiRouter.route('/users')
   .get(usersAPI.getAllUsers);
+
+apiRouter.route('/feedback')
+  .get(feedbackAPI.getAllFeedbacks)
+  .post(feedbackAPI.createFeedback);
+
+apiRouter.route('/feedback/types')
+  .get(feedbackAPI.getFeedbackTypes);
+
+apiRouter.route('/feedback/statuses')
+  .get(feedbackAPI.getFeedbackStatuses);
+
+apiRouter.route('/feedback/:feedbackId')
+  .get(feedbackAPI.getOneFeedback)
+  .delete(feedbackAPI.deleteFeedback)
+  .put(feedbackAPI.updateFeedback);
 
 app.use('/api', apiRouter);
 
@@ -43,9 +60,9 @@ app.use('/api', apiRouter);
 
 app.get(['/admin', '/admin/*'], function(req, res) {
   res.sendFile(path.resolve(__dirname + '/../public/backend/app.html'));
-})
+});
 
 // frontend serve
 app.get('*', function(req, res) {
   res.sendFile(path.resolve(__dirname + '/../public/frontend/app.html'));
-})
+});

@@ -11,8 +11,15 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'TestController as test',
       templateUrl: '/admin/js/routes/test/testView.html'
     })
+    .when('/feedback', {
+      controller: 'FeedbackController as feedbackCtrl',
+      templateUrl: '/admin/js/routes/feedback/feedbackView.html'
+    })
+    .when('/feedback/:id', {
+      controller: 'FeedbackItemController as feedbackItemCtrl',
+      templateUrl: '/admin/js/routes/feedbackItem/feedbackItemView.html'
+    })
     .otherwise({
       redirectTo: '/'
     })
-
-}])
+}]);

@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-7">
+            <h2>Contacts Info</h2>
+            <h3>Khmelnytskyi</h3>
+            <p>Proskurivska St., 53</p>
+            <p>+38 032 277 77 82</p>
+            <h3>Lviv</h3>
+            <p>Heroiv UPA St., 73, Business center "Taurus", building #2</p>
+            <p>+38 032 277 77 82</p>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+            <h2>Feedback</h2>
+            <div ng-if="contactsCtrl.feedbackSent">
+                <div class="alert alert-info">
+                    Your message has been sent
+                </div>
+            </div>
+            <form name="contactsCtrl.feedbackForm" ng-submit="contactsCtrl.submitForm()">
+                <div class="form-group" ng-class="{'has-error': !contactsCtrl.feedbackForm.customerName.$pristine && contactsCtrl.feedbackForm.customerName.$invalid}">
+                    <label for="customerName">Your Name</label>
+                    <input id="customerName" type="text" class="form-control"
+                    name="customerName"
+                    ng-model="contactsCtrl.formData.customer.name"
+                    ng-minlength="2"
+                    ng-maxlength="14"
+                    required
+                    >
+                    <p class="text-danger" ng-show="contactsCtrl.feedbackForm.customerName.$error.minlength">Name is too short.</p>
+                    <p class="text-danger" ng-show="contactsCtrl.feedbackForm.customerName.$error.maxlength">Name is too long.</p>
+                    <p class="text-danger" ng-show="!contactsCtrl.feedbackForm.customerName.$pristine && contactsCtrl.feedbackForm.customerName.$error.required">Your name is required.</p>
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">Your Phone</label>
+                    <input id="customerPhone" type="text" class="form-control"
+                    ng-model="contactsCtrl.formData.customer.phone"
+                    required
+                    >
+                </div>
+                <div class="form-group" ng-class="{'has-error': !contactsCtrl.feedbackForm.customerEmail.$pristine && contactsCtrl.feedbackForm.customerEmail.$invalid}">
+                    <label for="customerEmail">Your Email</label>
+                    <input id="customerEmail" type="email" class="form-control"
+                    name="customerEmail"
+                    ng-model="contactsCtrl.formData.customer.email"
+                    required
+                    >
+                    <p class="text-danger" ng-show="!contactsCtrl.feedbackForm.customerEmail.$pristine && contactsCtrl.feedbackForm.customerEmail.$invalid">Your email is required.</p>
+                </div>
+                <div class="form-group">
+                    <label for="feedbackType">Feedback Type</label>
+                    <select id="feedbackType" class="form-control"
+                    ng-model="contactsCtrl.formData.feedbackType"
+                    ng-options="type for type in contactsCtrl.feedbackTypes"
+                    ></select>
+                </div>
+                <div class="form-group" ng-class="{'has-error': !contactsCtrl.feedbackForm.message.$pristine && contactsCtrl.feedbackForm.message.$invalid}">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" class="form-control"
+                    name="message"
+                    ng-model="contactsCtrl.formData.content"
+                    required
+                    ></textarea>
+                    <p class="text-danger" ng-show="!contactsCtrl.feedbackForm.message.$pristine && contactsCtrl.feedbackForm.message.$invalid">Your message is required.</p>
+                </div>
+                <button type="submit" class="btn btn-success">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
