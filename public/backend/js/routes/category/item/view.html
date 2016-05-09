@@ -1,0 +1,21 @@
+<div class="container">
+  
+  <h2>View Category</h2>
+
+  <br>
+
+  <div ng-if="vm.loading" class="text-center">
+    <i class="fa fa-2x fa-spinner fa-spin"></i>
+  </div>
+
+  <div ng-if="!vm.loading">
+
+    <dl>
+      <dt>Name</dt>
+      <dd>{{vm.category.name}}</dd>
+      <dt>Description</dt>
+      <dd>{{vm.category.description}}</dd>
+    </dl>    
+
+  </div>
+</div>

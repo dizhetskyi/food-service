@@ -50,6 +50,18 @@ apiRouter.route('/feedback/:id')
   .get(feedbackAPI.getOneFeedback)
   .put(feedbackAPI.updateFeedback)
 
+// category routes
+var categoryAPI = require('./handlers/category');
+
+apiRouter.route('/category')
+  .get(categoryAPI.getAllCategories)
+  .post(categoryAPI.createCategory);
+
+apiRouter.route('/category/:id')
+  .get(categoryAPI.getCategory)
+  .put(categoryAPI.updateCategory)
+  .delete(categoryAPI.deleteCategory)
+
 app.use('/api', apiRouter);
 
 
@@ -59,6 +71,6 @@ app.get(['/admin', '/admin/*'], function(req, res) {
 })
 
 // frontend serve
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
   res.sendFile(path.resolve(__dirname + '/../public/frontend/app.html'));
 })

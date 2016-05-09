@@ -19,6 +19,23 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'FeedbackController as feedbackCtrl',
       templateUrl: '/admin/js/routes/feedback/feedbackView.html'      
     })
+    .when('/category/create', {
+      controller: 'CategoryFormController as vm',
+      templateUrl: '/admin/js/routes/category/form/view.html',
+      create: true
+    })
+    .when('/category/:id', {
+      controller: 'CategoryItemController as vm',
+      templateUrl: '/admin/js/routes/category/item/view.html'      
+    })
+    .when('/category/:id/update', {
+      controller: 'CategoryFormController as vm',
+      templateUrl: '/admin/js/routes/category/form/view.html',   
+    })
+    .when('/category', {
+      controller: 'CategoryController as vm',
+      templateUrl: '/admin/js/routes/category/categoryView.html'      
+    })
     .otherwise({
       redirectTo: '/'
     })
