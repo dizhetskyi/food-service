@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 var categorySchema = new mongoose.Schema({
 
@@ -17,13 +18,20 @@ var categorySchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  categories: {
+  parent: {
+    type: mongoose.Schema.ObjectId,
+    rel: 'Category',
+    default: null
+  },  
+  children: [{
     type: mongoose.Schema.ObjectId,
     rel: 'Category'
-  }
+  }]
 
 }, {
   collection: 'fs_categories'
 })
+
+categorySchema.plugin(deepPopulate);
 
 module.exports = mongoose.model('Category', categorySchema);

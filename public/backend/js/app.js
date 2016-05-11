@@ -1,4 +1,4 @@
-var app = angular.module('foodService', ['ngRoute']);
+var app = angular.module('foodService', ['ngRoute', 'ui.tree']);
 
 app.config(['$routeProvider', function($routeProvider) {
 

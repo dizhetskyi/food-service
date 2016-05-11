@@ -5,7 +5,7 @@ app.controller('IndexController', ['$scope', '$http', IndexController])
 function IndexController($scope, $http) {
 
   var vm = this;
-
+  
   vm.users = [];
 
   $http.get('/api/users')

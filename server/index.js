@@ -15,6 +15,7 @@ const server = app.listen(port, function() {
 
 // aliases
 app.use('/libs', express.static(path.resolve(__dirname + '/../node_modules')));
+app.use('/bower', express.static(path.resolve(__dirname + '/../bower_components')));
 app.use('/admin', express.static(path.resolve(__dirname + '/../public/backend')));
 app.use('/public', express.static(path.resolve(__dirname + '/../public/frontend')));
 
@@ -56,6 +57,9 @@ var categoryAPI = require('./handlers/category');
 apiRouter.route('/category')
   .get(categoryAPI.getAllCategories)
   .post(categoryAPI.createCategory);
+
+apiRouter.route('/category/structure')
+  .post(categoryAPI.updateStructure);
 
 apiRouter.route('/category/:id')
   .get(categoryAPI.getCategory)
